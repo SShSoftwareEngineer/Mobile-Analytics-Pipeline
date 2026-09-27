@@ -36,3 +36,6 @@ SELECT
     FALSE AS is_test
 FROM ranked_events
 WHERE rn = 1;
+
+ALTER TABLE events_fact
+ADD CONSTRAINT events_fact_pk PRIMARY KEY (event_id);

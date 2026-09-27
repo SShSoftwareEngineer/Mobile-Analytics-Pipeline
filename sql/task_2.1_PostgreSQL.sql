@@ -27,3 +27,6 @@ SELECT DISTINCT ON (event_id)
 FROM events_raw
 WHERE LOWER(TRIM(is_test)) = 'false'
 ORDER BY event_id, ingested_at DESC;
+
+ALTER TABLE events_fact
+ADD CONSTRAINT events_fact_pk PRIMARY KEY (event_id);
