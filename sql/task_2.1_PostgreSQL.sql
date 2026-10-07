@@ -25,7 +25,7 @@ SELECT DISTINCT ON (event_id)
     END AS revenue_usd,
     FALSE AS is_test
 FROM events_raw
-WHERE LOWER(TRIM(is_test)) = 'false'
+WHERE LOWER(TRIM(COALESCE(is_test, ''))) <> 'true'
 ORDER BY event_id, ingested_at DESC;
 
 ALTER TABLE events_fact

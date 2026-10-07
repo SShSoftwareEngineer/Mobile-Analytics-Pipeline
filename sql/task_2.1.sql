@@ -12,7 +12,7 @@ WITH ranked_events AS (
             ORDER BY ingested_at DESC
         ) AS rn
     FROM events_raw
-    WHERE LOWER(TRIM(is_test)) = 'false'
+    WHERE LOWER(TRIM(COALESCE(is_test, ''))) <> 'true'
 )
 SELECT
     event_id,
